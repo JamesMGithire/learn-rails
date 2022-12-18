@@ -5,6 +5,7 @@ require "excon"
 require "json"
 
 require_relative "./auth"
+require_relative "./mpesa_express"
 require_relative "./mpesa_time"
 
 t=mpesa_time
@@ -15,18 +16,22 @@ url="https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
 
 password=Base64.strict_encode64("#{paybill}#{pass_key}#{t}")
 
+m_express = mpesa_express(1,254798450464)
+puts m_express
+
 data={
   "BusinessShortCode": paybill,
   "Password": password,
   "Timestamp": t,
-  "CheckoutRequestID": "ws_CO_03122022122632898728829146",
+  "CheckoutRequestID": m_express["CheckoutRequestID"],
 }
 
 token=access_token
 
+sleep(7)
 
 response=Excon.post(url,:body=>JSON.generate(data),headers:{'Content-Type': 'application/json','Authorization': "Bearer #{token}"})
 
 
 # puts response.status
-# puts response.body
+puts response.body

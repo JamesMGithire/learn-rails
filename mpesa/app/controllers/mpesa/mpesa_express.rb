@@ -23,7 +23,7 @@ def mpesa_express(amount=1,phone)
       "PartyB": paybill,
       "PhoneNumber": phone,
       "CallBackURL": "https://mydomain.com/path",
-      "AccountReference": "CompanyXLTD",
+      "AccountReference": "Covers LTD",
       "TransactionDesc": "Payment of X"
     }
 
@@ -52,4 +52,4 @@ end
 # puts response.status
 # puts response.body
 
-puts mpesa_express(10,254728829146)
+# puts mpesa_express(10,254798450464)
