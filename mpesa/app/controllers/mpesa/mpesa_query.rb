@@ -17,7 +17,6 @@ url="https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
 password=Base64.strict_encode64("#{paybill}#{pass_key}#{t}")
 
 m_express = mpesa_express(1,254798450464)
-puts m_express
 
 data={
   "BusinessShortCode": paybill,
