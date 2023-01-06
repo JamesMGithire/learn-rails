@@ -52,4 +52,4 @@ end
 # puts response.status
 # puts response.body
 
-mpesa_express(10,254798450464)
+# mpesa_express(1,254723863262)
