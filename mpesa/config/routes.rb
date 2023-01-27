@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get "/mpesa", to: "mpesa#create"
+  post "/mpesa", to: "mpesa#create"
 end

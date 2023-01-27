@@ -11,11 +11,13 @@ def mpesa_express(amount=1,phone)
 
     t=mpesa_time
 
+    pass_key="bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
 
+    password=Base64.strict_encode64("#{paybill}#{pass_key}#{t}")
 
     data={
       "BusinessShortCode": paybill,
-      "Password": "",
+      "Password": password,
       "Timestamp": t,
       "TransactionType": "CustomerPayBillOnline",
       "Amount": amount,
@@ -23,18 +25,16 @@ def mpesa_express(amount=1,phone)
       "PartyB": paybill,
       "PhoneNumber": phone,
       "CallBackURL": "https://mydomain.com/path",
-      "AccountReference": "Covers LTD",
-      "TransactionDesc": "Payment of X"
+      "AccountReference": "CoversLTD",
+      "TransactionDesc": "Payment of X" 
     }
 
     url="https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-    pass_key="bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
 
 
 
 
-    password=Base64.strict_encode64("#{paybill}#{pass_key}#{t}")
 
     data[:Password]=password
 
@@ -52,4 +52,4 @@ end
 # puts response.status
 # puts response.body
 
-# mpesa_express(1,254723863262)
+mpesa_express(1,254798450464)
